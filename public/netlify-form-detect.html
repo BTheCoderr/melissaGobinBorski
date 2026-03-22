@@ -1,0 +1,21 @@
+<!doctype html>
+<!--
+  Infrastructure only: Netlify Forms registration for the Next.js app.
+  The live site is built with React/Next — not this file.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify form detection</title>
+  </head>
+  <body>
+    <!-- Parsed at deploy to register the "contact" form; fields must match ContactForm.tsx -->
+    <form name="contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="tel" name="phone" />
+      <textarea name="message"></textarea>
+      <input name="bot-field" />
+    </form>
+  </body>
+</html>

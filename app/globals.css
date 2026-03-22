@@ -1,0 +1,89 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+:root {
+  --background: #f9f6f0;
+  --paper-alt: #f4f0e8;
+  --foreground: #2a2620;
+  --muted: #5e594f;
+  --sage: #5f7164;
+  --sage-dark: #4d5d52;
+  --sage-light: #e6ebe4;
+  --blue-soft: #e2e9f0;
+  --blue-muted: #6a7a88;
+  --cream: #efe9dd;
+  --border: #e0d9cc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-paper-alt: var(--paper-alt);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-sage: var(--sage);
+  --color-sage-dark: var(--sage-dark);
+  --color-sage-light: var(--sage-light);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue-muted: var(--blue-muted);
+  --color-cream: var(--cream);
+  --color-border: var(--border);
+  --font-sans: var(--font-dm-sans);
+  --font-serif: var(--font-cormorant);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--sage-light);
+  color: var(--foreground);
+}
+
+@keyframes fade-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-fade {
+  animation: fade-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-fade-delay-1 {
+  animation-delay: 0.07s;
+}
+.hero-fade-delay-2 {
+  animation-delay: 0.14s;
+}
+.hero-fade-delay-3 {
+  animation-delay: 0.21s;
+}
+.hero-fade-delay-4 {
+  animation-delay: 0.28s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade,
+  .hero-fade-delay-1,
+  .hero-fade-delay-2,
+  .hero-fade-delay-3,
+  .hero-fade-delay-4 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
