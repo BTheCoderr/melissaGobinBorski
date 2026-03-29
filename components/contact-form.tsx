@@ -1,20 +1,49 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState, type FormEvent } from "react";
 import { btnPrimary, cn } from "@/lib/ui";
 
-/**
- * Netlify Forms — pair with `public/netlify-form-detect.html` at deploy.
- */
+/** Netlify Forms: POST to static `public/__forms.html` (required for Next.js on Netlify). */
+const NETLIFY_FORMS_ENDPOINT = "/__forms.html";
+
 export function ContactForm() {
+  const router = useRouter();
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(null);
+    setPending(true);
+    const form = event.currentTarget;
+    try {
+      const fd = new FormData(form);
+      const params = new URLSearchParams();
+      fd.forEach((value, key) => {
+        if (typeof value === "string") params.append(key, value);
+      });
+      const body = params.toString();
+      const res = await fetch(NETLIFY_FORMS_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      if (!res.ok) {
+        setError(`Something went wrong (${res.status}). Please try again or call the office.`);
+        return;
+      }
+      router.push("/contact?success=1");
+    } catch {
+      setError("Could not send your message. Please try again or call the office.");
+    } finally {
+      setPending(false);
+    }
+  }
+
   return (
-    <form
-      name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
-      action="/contact?success=1"
-      className="space-y-7"
-    >
+    <form name="contact" method="POST" className="space-y-7" onSubmit={handleSubmit}>
       <input type="hidden" name="form-name" value="contact" />
-      <input type="hidden" name="redirect" value="/contact?success=1" />
 
       <p className="hidden">
         <label>
@@ -32,11 +61,13 @@ export function ContactForm() {
           type="text"
           autoComplete="name"
           required
+          disabled={pending}
           className={cn(
             "mt-2.5 w-full rounded-2xl border border-foreground/[0.1] bg-background/80 px-4 py-3.5",
             "text-[1rem] text-foreground shadow-inner shadow-foreground/[0.02]",
             "outline-none transition-[box-shadow,border-color] duration-300",
             "focus:border-sage/35 focus:ring-2 focus:ring-sage/15",
+            "disabled:opacity-60",
           )}
         />
       </div>
@@ -51,11 +82,13 @@ export function ContactForm() {
           type="email"
           autoComplete="email"
           required
+          disabled={pending}
           className={cn(
             "mt-2.5 w-full rounded-2xl border border-foreground/[0.1] bg-background/80 px-4 py-3.5",
             "text-[1rem] text-foreground shadow-inner shadow-foreground/[0.02]",
             "outline-none transition-[box-shadow,border-color] duration-300",
             "focus:border-sage/35 focus:ring-2 focus:ring-sage/15",
+            "disabled:opacity-60",
           )}
         />
       </div>
@@ -69,11 +102,13 @@ export function ContactForm() {
           name="phone"
           type="tel"
           autoComplete="tel"
+          disabled={pending}
           className={cn(
             "mt-2.5 w-full rounded-2xl border border-foreground/[0.1] bg-background/80 px-4 py-3.5",
             "text-[1rem] text-foreground shadow-inner shadow-foreground/[0.02]",
             "outline-none transition-[box-shadow,border-color] duration-300",
             "focus:border-sage/35 focus:ring-2 focus:ring-sage/15",
+            "disabled:opacity-60",
           )}
         />
       </div>
@@ -87,17 +122,25 @@ export function ContactForm() {
           name="message"
           rows={5}
           required
+          disabled={pending}
           className={cn(
             "mt-2.5 w-full resize-y rounded-2xl border border-foreground/[0.1] bg-background/80 px-4 py-3.5",
             "text-[1rem] text-foreground shadow-inner shadow-foreground/[0.02]",
             "outline-none transition-[box-shadow,border-color] duration-300",
             "focus:border-sage/35 focus:ring-2 focus:ring-sage/15",
+            "disabled:opacity-60",
           )}
         />
       </div>
 
-      <button type="submit" className={btnPrimary}>
-        Send message
+      {error ? (
+        <p className="text-[0.9375rem] text-red-800/90 dark:text-red-200/90" role="alert">
+          {error}
+        </p>
+      ) : null}
+
+      <button type="submit" className={btnPrimary} disabled={pending} aria-busy={pending}>
+        {pending ? "Sending…" : "Send message"}
       </button>
     </form>
   );

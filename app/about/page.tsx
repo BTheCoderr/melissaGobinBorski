@@ -4,7 +4,7 @@ import Link from "next/link";
 import { FadeIn } from "@/components/fade-in";
 import { PageHero } from "@/components/page-hero";
 import { SectionTitle } from "@/components/section-title";
-import { practice } from "@/lib/site";
+import { practice, therapistHeadshotAlt } from "@/lib/site";
 import { btnPrimary, cn, photoFrame, proseBody, proseBodySm, sectionRule, sectionY, shell } from "@/lib/ui";
 
 export const metadata: Metadata = {
@@ -75,6 +75,19 @@ export default function AboutPage() {
               </FadeIn>
 
               <FadeIn>
+                <div className={cn(photoFrame, "bg-paper-alt max-w-[min(100%,280px)]")}>
+                  <Image
+                    src="/melissa-headshot-outdoor.webp"
+                    alt={therapistHeadshotAlt}
+                    width={720}
+                    height={720}
+                    className="aspect-square h-auto w-full object-cover object-center"
+                    sizes="280px"
+                  />
+                </div>
+              </FadeIn>
+
+              <FadeIn>
                 <Link href="/contact" className={btnPrimary}>
                   Connect with me
                 </Link>
@@ -84,11 +97,11 @@ export default function AboutPage() {
             <aside className="md:sticky md:top-28">
               <div className={cn(photoFrame, "bg-paper-alt")}>
                 <Image
-                  src="/melissa-with-roscoe.png"
-                  alt="Melissa Gobin Borski, a smiling therapist with curly hair, seated in a patterned armchair with Roscoe, her small therapy dog in a blue sweater."
-                  width={768}
+                  src="/melissa-headshot-office.webp"
+                  alt={therapistHeadshotAlt}
+                  width={682}
                   height={1024}
-                  className="h-auto w-full object-cover"
+                  className="h-auto w-full object-cover object-[center_22%]"
                   sizes="280px"
                 />
               </div>

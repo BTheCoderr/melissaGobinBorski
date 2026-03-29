@@ -39,8 +39,9 @@ npm run lint
 2. **Build command:** `npm run build`
 3. **Publish directory:** leave empty — `@netlify/plugin-nextjs` (see `netlify.toml`) handles Next.js output.
 4. **Environment variables:** set `NEXT_PUBLIC_SITE_URL` to your live URL (e.g. `https://www.your-domain.com`) for accurate Open Graph URLs and JSON-LD.
-5. After the first deploy, confirm **Forms** shows the `contact` form (registered via `public/netlify-form-detect.html` and `components/contact-form.tsx` field names).
-6. Replace placeholder images in `public/` (`office-1.jpg`, `office-2.jpg`, `therapist-headshot.jpg`) with real photos when ready.
+5. In Netlify: **Forms** → enable **form detection** if prompted, then redeploy. After deploy, confirm the **`contact`** form appears (registered from `public/__forms.html`; submissions POST there per [OpenNext Forms](https://opennext.js.org/netlify/forms)).
+6. Optional: **Site configuration** → **Notifications** → **Form submission notifications** to email new submissions to the practice inbox.
+7. Replace placeholder images in `public/` (`office-1.jpg`, `office-2.jpg`, `therapist-headshot.jpg`) with real photos when ready.
 
 ## Project layout (App Router)
 

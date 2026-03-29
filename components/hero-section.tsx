@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { btnPrimary, btnSecondary, cn, kicker, photoFrame, shell, tag } from "@/lib/ui";
-import { practice } from "@/lib/site";
+import { practice, therapistHeadshotAlt } from "@/lib/site";
 
 const trustChips = [
   "Accepting new clients",
@@ -77,12 +77,12 @@ export function HeroSection() {
           <div className="relative mx-auto w-full max-w-[300px] lg:mx-0 lg:max-w-none">
             <div className={cn(photoFrame, "bg-paper-alt")}>
               <Image
-                src="/melissa-with-roscoe.png"
-                alt="Melissa Gobin Borski, a smiling therapist with curly hair, seated in a patterned armchair with Roscoe, her small therapy dog in a blue sweater."
-                width={768}
+                src="/melissa-headshot-office.webp"
+                alt={therapistHeadshotAlt}
+                width={682}
                 height={1024}
                 priority
-                className="h-auto w-full object-cover"
+                className="h-auto w-full object-cover object-[center_22%]"
                 sizes="(min-width: 1024px) 340px, 80vw"
               />
             </div>

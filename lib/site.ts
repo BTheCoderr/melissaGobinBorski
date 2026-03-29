@@ -1,5 +1,9 @@
 /** Factual practice details — aligned with public directory profile. */
 
+/** Alt text for professional headshots (hero, about, optional secondary). */
+export const therapistHeadshotAlt =
+  "Melissa Gobin Borski, LCSW, therapist in Thompson CT" as const;
+
 export const practice = {
   therapistName: "Melissa Gobin Borski",
   credentials: "LCSW, LICSW",
