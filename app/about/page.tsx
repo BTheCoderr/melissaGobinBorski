@@ -9,7 +9,7 @@ import { btnPrimary, cn, photoFrame, proseBody, proseBodySm, sectionRule, sectio
 
 export const metadata: Metadata = {
   title: "About",
-  description: `${practice.therapistName}, LCSW, LICSW—${practice.yearsInPractice}+ years supporting adults in Windham County, CT.`,
+  description: `${practice.therapistName}, LCSW, LICSW—${practice.yearsInPractice}+ years supporting individuals in Windham County, CT.`,
 };
 
 export default function AboutPage() {
@@ -30,10 +30,8 @@ export default function AboutPage() {
                 <SectionTitle kicker="Approach" title="Warm, direct, and unhurried" />
                 <div className={cn("mt-7 space-y-6", proseBody)}>
                   <p>
-                    I’m {practice.therapistName}, a licensed clinical social worker with{" "}
-                    {practice.yearsInPractice} years in practice. I work with adults one-on-one—often
-                    around anxiety, trauma, mood shifts, and the patterns that show up in
-                    relationships.
+                    I’m {practice.therapistName}, a licensed clinical social worker with over 20 years
+                    in practice. {practice.audienceLine}
                   </p>
                   <p>
                     Clients tell me they value both compassion and clarity. I won’t dodge what’s hard,
@@ -59,8 +57,9 @@ export default function AboutPage() {
                       .join(" · ")}
                   </li>
                   <li>
-                    <span className="font-medium text-foreground">Format:</span> Individual adults;
-                    in-person ({practice.locality}) and telehealth when appropriate.
+                    <span className="font-medium text-foreground">Format:</span> Individual{" "}
+                    {practice.audienceShort.toLowerCase()}; in-person ({practice.locality}) and
+                    telehealth when appropriate. {practice.massachusettsTelehealthLine}
                   </li>
                 </ul>
               </FadeIn>
@@ -85,10 +84,10 @@ export default function AboutPage() {
             <aside className="md:sticky md:top-28">
               <div className={cn(photoFrame, "bg-paper-alt")}>
                 <Image
-                  src="/therapist-headshot.jpg"
-                  alt={`${practice.therapistName} — replace with your headshot`}
-                  width={900}
-                  height={1100}
+                  src="/melissa-with-roscoe.png"
+                  alt="Melissa Gobin Borski, a smiling therapist with curly hair, seated in a patterned armchair with Roscoe, her small therapy dog in a blue sweater."
+                  width={768}
+                  height={1024}
                   className="h-auto w-full object-cover"
                   sizes="280px"
                 />

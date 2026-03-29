@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { btnPrimary, btnSecondary, cn, kicker, shell, tag } from "@/lib/ui";
+import { btnPrimary, btnSecondary, cn, kicker, photoFrame, shell, tag } from "@/lib/ui";
 import { practice } from "@/lib/site";
 
 const trustChips = [
@@ -27,7 +27,7 @@ export function HeroSection() {
       <div className={cn(shell, "relative py-[clamp(3.5rem,11vw,6.25rem)]")}>
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_min(100%,340px)] lg:gap-20">
           <div>
-            <p className={cn(kicker, "hero-fade")}>Therapy for adults in Thompson, CT</p>
+            <p className={cn(kicker, "hero-fade")}>{practice.heroKicker}</p>
             <h1
               className={cn(
                 "hero-fade hero-fade-delay-1 mt-6 max-w-[22rem] text-balance font-serif text-[clamp(1.85rem,4.2vw,2.45rem)] font-normal leading-[1.14] tracking-[-0.025em] text-foreground sm:max-w-2xl",
@@ -47,8 +47,8 @@ export function HeroSection() {
                 "hero-fade hero-fade-delay-3 mt-6 max-w-md text-pretty text-[1.0625rem] leading-[1.75] text-muted sm:max-w-lg",
               )}
             >
-              Quiet, skilled support for anxiety, trauma, low mood, and stress—at your pace, without
-              pressure to have it all figured out first.
+              Genuine empathy and skilled support for anxiety, trauma, low mood, and stress—at your
+              pace, without pressure to have it all figured out first.
             </p>
             <ul
               className={cn("hero-fade hero-fade-delay-3 mt-10 flex flex-wrap gap-2.5")}
@@ -75,20 +75,17 @@ export function HeroSection() {
           </div>
 
           <div className="relative mx-auto w-full max-w-[300px] lg:mx-0 lg:max-w-none">
-            <div className={cn("photoFrame bg-paper-alt")}>
+            <div className={cn(photoFrame, "bg-paper-alt")}>
               <Image
-                src="/therapist-headshot.jpg"
-                alt={`${practice.therapistName}, therapist — replace with your portrait`}
-                width={900}
-                height={1100}
+                src="/melissa-with-roscoe.png"
+                alt="Melissa Gobin Borski, a smiling therapist with curly hair, seated in a patterned armchair with Roscoe, her small therapy dog in a blue sweater."
+                width={768}
+                height={1024}
                 priority
                 className="h-auto w-full object-cover"
                 sizes="(min-width: 1024px) 340px, 80vw"
               />
             </div>
-            <p className="mt-4 text-center text-[0.7rem] uppercase tracking-[0.2em] text-stone-400 lg:text-left">
-              Replace with your portrait
-            </p>
           </div>
         </div>
       </div>

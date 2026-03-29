@@ -4,8 +4,28 @@ export const practice = {
   therapistName: "Melissa Gobin Borski",
   credentials: "LCSW, LICSW",
   title: "Clinical Social Work / Therapist",
-  phoneDisplay: "(860) 390-5189",
-  phoneTel: "+18603905189",
+  phoneDisplay: "(860) 377-2752",
+  phoneTel: "+18603772752",
+  email: "melissagobin@therapysecure.com",
+  /** Short label for meta, footers, cards (sentence-style, not all-caps) */
+  audienceShort: "Adults and adolescents 13 and over",
+  /** Hero kicker — shown as written (not lowercased) */
+  heroKicker: "For adults and adolescents in the Thompson area",
+  /** Follows the opening “I’m … LCSW” line on About */
+  audienceLine:
+    "I work with adults and adolescents 13 and over one-on-one—often around anxiety, trauma, mood shifts, and the patterns that show up in relationships.",
+  /** Blended CT + MA without feeling like a separate “jurisdiction list” */
+  massachusettsTelehealthLine:
+    "I’m licensed in Massachusetts as well, so telehealth there is an option when it’s a good clinical fit.",
+  /** Service area line for focus / location blurbs */
+  serviceAreaLine:
+    "Thompson, Putnam, Woodstock, and Windham County—nearby or by telehealth, including for clients in Massachusetts when we’re a good fit.",
+  /** Follows the street address on Services (avoids repeating “Thompson”) */
+  officeReachLine:
+    "Clients come from Putnam, Woodstock, Windham County, and surrounding Connecticut towns—or connect by telehealth, including from Massachusetts when we’re a good clinical fit.",
+  /** Footer — avoids repeating “Thompson” after locality */
+  footerServiceArea:
+    "Serving Putnam, Woodstock, Windham County, and nearby Connecticut towns—and telehealth for Massachusetts clients when we’re a good fit.",
   addressLine1: "1020 Riverside Drive",
   addressLine2: "Thompson, CT 06255",
   locality: "North Grosvenor Dale & Thompson, Connecticut",

@@ -12,8 +12,8 @@ export function SiteFooter() {
             <p className="font-serif text-xl font-normal text-foreground">{practice.therapistName}</p>
             <p className="mt-2 text-sm text-muted">{practice.title} · {practice.credentials}</p>
             <p className="mt-6 max-w-sm text-[0.9375rem] leading-[1.75] text-muted">
-              Therapy for adults in {practice.locality}. Also serving{" "}
-              {practice.nearbyAreas.join(", ")}, and nearby Connecticut towns.
+              Therapy for {practice.audienceShort.toLowerCase()} in {practice.locality}.{" "}
+              {practice.footerServiceArea}
             </p>
           </div>
           <div>
@@ -25,6 +25,12 @@ export function SiteFooter() {
               href={`tel:${practice.phoneTel}`}
             >
               {practice.phoneDisplay}
+            </a>
+            <a
+              className="mt-3 block text-sm font-medium text-sage underline decoration-sage/25 underline-offset-[5px] transition-colors hover:decoration-sage/60"
+              href={`mailto:${practice.email}`}
+            >
+              {practice.email}
             </a>
             <p className="mt-5 text-sm leading-relaxed text-muted">
               {practice.addressLine1}

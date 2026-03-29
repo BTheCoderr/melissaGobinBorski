@@ -12,10 +12,10 @@ export function SeoJsonLd() {
     "@context": "https://schema.org",
     "@type": "MedicalBusiness",
     name: `${practice.therapistName}, ${practice.credentials}`,
-    description:
-      "Individual therapy for adults in Thompson and North Grosvenor Dale, Connecticut. In-person and telehealth.",
+    description: `Individual therapy for ${practice.audienceShort.toLowerCase()} in Thompson and North Grosvenor Dale, Connecticut. In-person and telehealth. ${practice.massachusettsTelehealthLine}`,
     url: siteUrl,
     telephone: practice.phoneTel,
+    email: practice.email,
     address: {
       "@type": "PostalAddress",
       streetAddress: practice.addressLine1,

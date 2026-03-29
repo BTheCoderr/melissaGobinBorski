@@ -22,7 +22,7 @@ type Props = {
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: `${practice.therapistName}, LCSW, LICSW—${practice.phoneDisplay}. Thompson, Windham County, CT.`,
+  description: `${practice.therapistName}, LCSW, LICSW—${practice.phoneDisplay}, ${practice.email}. Thompson, Windham County, CT.`,
 };
 
 export default async function ContactPage({ searchParams }: Props) {
@@ -64,6 +64,12 @@ export default async function ContactPage({ searchParams }: Props) {
                 href={`tel:${practice.phoneTel}`}
               >
                 {practice.phoneDisplay}
+              </a>
+              <a
+                className="mt-4 block text-[1.0625rem] font-medium text-sage underline decoration-sage/25 underline-offset-[5px] transition-colors hover:decoration-sage/60"
+                href={`mailto:${practice.email}`}
+              >
+                {practice.email}
               </a>
               <p className={cn(proseBodySm, "mt-6")}>
                 {practice.addressLine1}

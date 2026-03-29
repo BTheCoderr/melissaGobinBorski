@@ -15,6 +15,7 @@ import {
   cardRaised,
   cn,
   linkAccent,
+  photoFrame,
   proseBody,
   proseBodySm,
   sectionRule,
@@ -23,16 +24,23 @@ import {
   tag,
 } from "@/lib/ui";
 
+const testimonialQuotes = [
+  "It’s eye opening, it helped me see what was going on, things are much more clear now.",
+  "You care about what you do and that means a lot.",
+  "I was a hopeless mess and all over the place and Melissa helped me become stronger and more confident to find a complete sense of my self-confidence.",
+  "When the rubber meets the road, she’ll meet you there.",
+] as const;
+
 export const metadata: Metadata = {
-  title: "Therapy for Adults in Thompson, CT",
+  title: "Therapy in Thompson, CT",
   description:
-    "When everything feels like too much, you don’t have to carry it alone. Melissa Gobin Borski, LCSW, LICSW—individual therapy in Thompson, CT. In-person & telehealth.",
+    "When everything feels like too much, you don’t have to carry it alone. Melissa Gobin Borski, LCSW, LICSW—individual therapy for adults and adolescents 13 and over in Thompson, CT. In-person & telehealth.",
 };
 
 const featureItems = [
   {
     t: "Steady presence",
-    d: "A calm room and unhurried attention—online or in person.",
+    d: "A safe place to process scary and overwhelming emotions—and supportive space to work through challenges with someone neutral and attuned to your individual needs.",
   },
   {
     t: "Tools that translate",
@@ -85,8 +93,8 @@ export default function HomePage() {
         <FadeIn>
           <SectionTitle kicker="Permission" title="Hard seasons rarely come with a map" />
           <p className={cn(proseBody, "mt-7")}>
-            Old pain, new stress, or a quiet sense that something needs to shift—support can make
-            the weight feel more workable.
+            Old pain, new stress, or a quiet sense that something needs to shift—having the right
+            supports can help these changes feel less scary and more manageable.
           </p>
         </FadeIn>
       </EditorialSection>
@@ -95,9 +103,10 @@ export default function HomePage() {
         <FadeIn>
           <SectionTitle kicker="How we work" title="Clear, kind, and practical" />
           <p className={cn(proseBody, "mt-7 max-w-2xl")}>
-            One-on-one care for adults, tuned to what your nervous system can handle. With{" "}
-            {practice.yearsInPractice} years in practice, I balance warmth with honesty—so change
-            feels real, not performative.
+            One-on-one care for {practice.audienceShort.toLowerCase()}, tuned to what your nervous
+            system can handle. With {practice.yearsInPractice} years in practice, I balance warmth
+            with honesty—so change feels real without feeling like you need to say the “right thing,”
+            and without fear of judgment.
           </p>
           <ul className="mt-14 grid gap-5 sm:grid-cols-3">
             {featureItems.map((item) => (
@@ -115,9 +124,7 @@ export default function HomePage() {
       <EditorialSection>
         <FadeIn>
           <SectionTitle kicker="Focus areas" title="What people often bring" />
-          <p className={cn(proseBodySm, "mt-5 max-w-xl")}>
-            Thompson, Putnam, Woodstock, and Windham County—near or far by telehealth.
-          </p>
+          <p className={cn(proseBodySm, "mt-5 max-w-xl")}>{practice.serviceAreaLine}</p>
           <ul className="mt-12 flex flex-wrap gap-3">
             {featuredSpecialties.map((s) => (
               <li key={s} className={tag}>
@@ -142,7 +149,7 @@ export default function HomePage() {
               <SectionTitle kicker="Where we meet" title="In-office or from home" />
               <p className={cn(proseBody, "mt-7")}>
                 {practice.addressLine1}, {practice.addressLine2}. Prefer video? Secure telehealth
-                is available when it’s a good clinical fit.
+                is available when it’s a good clinical fit. {practice.massachusettsTelehealthLine}
               </p>
             </div>
             <aside className={cn(cardRaised, "p-9 md:p-10")}>
@@ -162,16 +169,117 @@ export default function HomePage() {
         </FadeIn>
       </EditorialSection>
 
+      <EditorialSection>
+        <FadeIn>
+          <SectionTitle kicker="The space" title="Office environment" />
+          <p className={cn(proseBody, "mt-7 max-w-2xl")}>
+            The room is meant to feel grounded and uncluttered—soft light, comfortable seating, and
+            a few thoughtful touches so you can settle in. Nothing here is about performance; it’s
+            about having a private place to think out loud.
+          </p>
+          <div className="mt-14 grid gap-8 md:grid-cols-2 md:gap-10">
+            <figure className="m-0">
+              <div className={cn(photoFrame, "bg-paper-alt")}>
+                <Image
+                  src="/office-welcome.png"
+                  alt="A bright therapy office with a patterned armchair, round wooden coffee table with tissues and an hourglass, bookshelf with plants, and blue-gray walls."
+                  width={1024}
+                  height={768}
+                  className="h-auto w-full object-cover"
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                />
+              </div>
+            </figure>
+            <figure className="m-0">
+              <div className={cn(photoFrame, "bg-paper-alt")}>
+                <Image
+                  src="/office-session-space.png"
+                  alt="A warm therapy office with a beige sofa, patterned chairs, a round coffee table on a green rug, natural light through sheer curtains, and a small tan therapy dog standing on the hardwood floor."
+                  width={1024}
+                  height={768}
+                  className="h-auto w-full object-cover"
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                />
+              </div>
+            </figure>
+          </div>
+        </FadeIn>
+      </EditorialSection>
+
+      <EditorialSection tone="mist">
+        <FadeIn>
+          <SectionTitle kicker="Co-therapist" title="Meet Roscoe" />
+          <div className={cn("mt-7 max-w-2xl space-y-6", proseBody)}>
+            <p>
+              You’ll also meet Roscoe—my unofficial co-therapist. He tends to rotate between napping
+              and being extra loving, and he genuinely loves being part of the space.
+            </p>
+            <p>
+              He’s always with me, so his presence is part of the environment here. There is no need
+              for him to approach you if you are uncomfortable—please let me know prior to your
+              session.
+            </p>
+          </div>
+          <div className="mt-14 grid gap-8 md:grid-cols-2 md:gap-10">
+            <figure className="m-0">
+              <div className={cn(photoFrame, "bg-paper-alt")}>
+                <Image
+                  src="/roscoe-resting.png"
+                  alt="Roscoe, a small therapy dog with wavy apricot fur and gentle eyes, resting his head on a plush toy while lying on a grey sofa."
+                  width={768}
+                  height={1024}
+                  className="h-auto w-full object-cover"
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                />
+              </div>
+            </figure>
+            <figure className="m-0">
+              <div className={cn(photoFrame, "bg-paper-alt")}>
+                <Image
+                  src="/melissa-with-roscoe.png"
+                  alt="Melissa Gobin Borski seated in a patterned armchair with Roscoe, her small therapy dog in a blue sweater, beside her."
+                  width={768}
+                  height={1024}
+                  className="h-auto w-full object-cover"
+                  sizes="(min-width: 768px) 45vw, 100vw"
+                />
+              </div>
+            </figure>
+          </div>
+        </FadeIn>
+      </EditorialSection>
+
       <EditorialSection tone="wash">
         <FadeIn>
           <SectionTitle kicker="Insurance" title="Plans I work with" />
-          <p className={cn(proseBodySm, "mt-5 max-w-xl")}>
-            Benefits differ by policy—we’ll confirm yours together before we begin.
+          <p className={cn(proseBodySm, "mt-5 max-w-2xl")}>
+            Coverage varies depending on your individual insurance plan—we’ll confirm yours together
+            before we begin. If you do not have insurance, self-pay plans are available.
           </p>
           <ul className="mt-12 grid gap-3 sm:grid-cols-2">
             {insuranceAccepted.map((p) => (
               <li key={p} className={cn(cardInset, "px-5 py-4 text-[0.9375rem] text-foreground/90")}>
                 {p}
+              </li>
+            ))}
+          </ul>
+        </FadeIn>
+      </EditorialSection>
+
+      <EditorialSection>
+        <FadeIn>
+          <SectionTitle kicker="Client testimonials" title="In their words" />
+          <ul className="mt-12 space-y-10 md:space-y-12">
+            {testimonialQuotes.map((q) => (
+              <li key={q}>
+                <blockquote
+                  className={cn(
+                    "border-l-2 border-sage/25 pl-8",
+                    "font-serif text-[clamp(1.05rem,2vw,1.2rem)] font-normal leading-[1.55] text-foreground/92",
+                  )}
+                >
+                  <p className="text-pretty">“{q}”</p>
+                </blockquote>
               </li>
             ))}
           </ul>
@@ -191,7 +299,7 @@ export default function HomePage() {
             </p>
             <div className="mt-12 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <Link href="/contact" className={cn(btnPrimary, "w-full sm:w-auto")}>
-                Request a conversation
+                Ask a question or request a consultation
               </Link>
               <a href={`tel:${practice.phoneTel}`} className={cn(btnSecondary, "w-full sm:w-auto")}>
                 {practice.phoneDisplay}
@@ -200,42 +308,6 @@ export default function HomePage() {
           </FadeIn>
         </div>
       </section>
-
-      <EditorialSection className="pb-[clamp(4rem,12vw,7rem)] pt-4">
-        <FadeIn>
-          <SectionTitle kicker="The space" title="A quiet place to land" />
-          <p className={cn(proseBodySm, "mt-5 max-w-xl")}>
-            Your office photos—swap these files in <code className="text-foreground/70">public/</code>{" "}
-            anytime.
-          </p>
-          <div className="mt-14 grid gap-8 md:grid-cols-2 md:gap-10">
-            <figure className="md:row-span-1">
-              <div className={cn("photoFrame bg-paper-alt")}>
-                <Image
-                  src="/office-1.jpg"
-                  alt="Therapy office interior — replace with your photo"
-                  width={1400}
-                  height={900}
-                  className="h-auto w-full object-cover"
-                  sizes="(min-width: 768px) 45vw, 100vw"
-                />
-              </div>
-            </figure>
-            <figure className="flex flex-col justify-center md:pt-8">
-              <div className={cn("photoFrame bg-paper-alt")}>
-                <Image
-                  src="/office-2.jpg"
-                  alt="Comfortable therapy space — replace with your photo"
-                  width={1400}
-                  height={900}
-                  className="h-auto w-full object-cover"
-                  sizes="(min-width: 768px) 45vw, 100vw"
-                />
-              </div>
-            </figure>
-          </div>
-        </FadeIn>
-      </EditorialSection>
     </div>
   );
 }

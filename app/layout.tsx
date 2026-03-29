@@ -34,8 +34,7 @@ export const metadata: Metadata = {
     default: baseTitle,
     template: `%s | ${practice.therapistName}`,
   },
-  description:
-    "Calm, experienced therapy for adults in Thompson & North Grosvenor Dale, CT. LCSW, LICSW. In-person & telehealth.",
+  description: `Calm, experienced therapy for ${practice.audienceShort.toLowerCase()} in Thompson & North Grosvenor Dale, CT. LCSW, LICSW. In-person & telehealth.`,
   openGraph: {
     title: baseTitle,
     description:

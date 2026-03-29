@@ -9,7 +9,7 @@ import { btnPrimary, card, cn, proseBody, proseBodySm, sectionRule, sectionY, sh
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Individual therapy for adults—Thompson, Windham County, CT. CBT, DBT, trauma-informed care. In-person & telehealth.",
+    "Individual therapy for adults and adolescents 13 and over—Thompson, Windham County, CT. EMDR, CBT, DBT, trauma-informed care. In-person & telehealth.",
 };
 
 export default function ServicesPage() {
@@ -18,22 +18,38 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Therapy shaped around you"
-        description="One-on-one work for adults—clear, collaborative, and paced for where you are today."
+        description="One-on-one work for adults and adolescents 13 and over—clear, collaborative, and paced for where you are today."
       />
 
       <section className={cn("relative", sectionY)}>
         <div className={sectionRule} aria-hidden />
         <div className={shell}>
           <FadeIn>
-            <SectionTitle kicker="Individual therapy" title="For adults, in confidence" />
+            <SectionTitle
+              kicker="Individual therapy"
+              title="For adults and adolescents 13 and over, in confidence"
+            />
             <p className={cn(proseBody, "mt-7 max-w-2xl")}>
               Sessions are conversational and private. We name what’s hard, notice patterns, and
               practice responses that fit your actual life—not a textbook version of it.
             </p>
             <p className={cn(proseBody, "mt-6 max-w-2xl")}>
-              Office: {practice.addressLine1}, {practice.addressLine2}. Near{" "}
-              {practice.nearbyAreas.join(", ")}, and Windham County. Telehealth when it’s clinically
-              appropriate.
+              Office: {practice.addressLine1}, {practice.addressLine2}. {practice.officeReachLine}
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      <section className={cn("relative", sectionY)}>
+        <div className={sectionRule} aria-hidden />
+        <div className={shell}>
+          <FadeIn>
+            <SectionTitle kicker="EMDR" title="Processing with support" />
+            <p className={cn(proseBody, "mt-7 max-w-2xl")}>
+              EMDR (Eye Movement Desensitization and Reprocessing) is a core part of my work. It’s
+              an evidence-based approach that helps the brain process and heal from distressing or
+              stuck experiences, so they no longer carry the same intensity. We move at your pace,
+              with a focus on feeling grounded and supported throughout.
             </p>
           </FadeIn>
         </div>
@@ -91,7 +107,8 @@ export default function ServicesPage() {
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sage" aria-hidden />
                 <span className={proseBodySm}>
                   <strong className="font-medium text-foreground">First sessions:</strong> What
-                  brought you in, what you hope for, and space for your questions.
+                  brought you in, what you hope for, information gathering to prepare for ongoing
+                  work, and a safe space for your questions.
                 </span>
               </li>
               <li className="flex gap-4">
@@ -119,10 +136,11 @@ export default function ServicesPage() {
           <FadeIn>
             <SectionTitle kicker="Insurance" title="Fees & coverage" />
             <p className={cn(proseBodySm, "mt-5 max-w-2xl")}>
-              {insuranceAccepted.join(", ")}. Coverage varies—we’ll verify your plan together.
+              {insuranceAccepted.join(", ")}. Coverage varies depending on your individual insurance
+              plan. If you do not have insurance, self-pay plans are available.
             </p>
             <Link href="/contact" className={cn(btnPrimary, "mt-12 inline-flex")}>
-              Ask a question or request a time
+              Ask a question or request a consultation
             </Link>
           </FadeIn>
         </div>
