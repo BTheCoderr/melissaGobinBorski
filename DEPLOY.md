@@ -38,7 +38,7 @@ npm run lint
 1. Connect this repository in the [Netlify](https://app.netlify.com) dashboard.
 2. **Build command:** `npm run build`
 3. **Publish directory:** leave empty — `@netlify/plugin-nextjs` (see `netlify.toml`) handles Next.js output.
-4. **Environment variables:** set `NEXT_PUBLIC_SITE_URL` to your live URL (e.g. `https://www.your-domain.com`) for accurate Open Graph URLs and JSON-LD.
+4. **Environment variables:** set `NEXT_PUBLIC_SITE_URL` to your live canonical URL (e.g. `https://melissagobintherapy.net` or `https://www.melissagobintherapy.net`, matching Netlify’s primary domain) so Open Graph, JSON-LD, sitemap, and `metadataBase` stay correct. The app falls back to `https://melissagobintherapy.net` only if this is unset at build time.
 5. In Netlify: **Forms** → enable **form detection** if prompted, then redeploy. After deploy, confirm the **`contact`** form appears (registered from `public/__forms.html`; submissions POST there per [OpenNext Forms](https://opennext.js.org/netlify/forms)).
 6. Optional: **Site configuration** → **Notifications** → **Form submission notifications** to email new submissions to the practice inbox.
 7. Replace or add images in `public/` as needed; current assets include headshots, office photos, and Roscoe images referenced by the home and about pages.

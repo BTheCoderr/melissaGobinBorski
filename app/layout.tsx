@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SeoJsonLd } from "@/lib/seo-json-ld";
 import { practice } from "@/lib/site";
+import { getSiteUrl } from "@/lib/site-url";
 import { cn } from "@/lib/ui";
 import "./globals.css";
 
@@ -23,13 +24,10 @@ const sans = DM_Sans({
 
 const baseTitle = `${practice.therapistName} | Therapist in Thompson & North Grosvenor Dale, CT`;
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.startsWith("http")
-    ? process.env.NEXT_PUBLIC_SITE_URL
-    : "https://www.example.com";
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(`${siteUrl}/`),
   title: {
     default: baseTitle,
     template: `%s | ${practice.therapistName}`,
@@ -39,6 +37,8 @@ export const metadata: Metadata = {
     title: baseTitle,
     description:
       "A steadier place to begin—individual therapy with Melissa Gobin Borski, LCSW, LICSW.",
+    url: siteUrl,
+    siteName: practice.therapistName,
     locale: "en_US",
     type: "website",
   },

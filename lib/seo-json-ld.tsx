@@ -1,12 +1,8 @@
 import { practice } from "@/lib/site";
-
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.startsWith("http")
-    ? process.env.NEXT_PUBLIC_SITE_URL
-    : undefined;
+import { getSiteUrl } from "@/lib/site-url";
 
 export function SeoJsonLd() {
-  if (!siteUrl) return null;
+  const siteUrl = getSiteUrl();
 
   const data = {
     "@context": "https://schema.org",
