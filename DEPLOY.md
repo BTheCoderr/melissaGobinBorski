@@ -41,7 +41,7 @@ npm run lint
 4. **Environment variables:** set `NEXT_PUBLIC_SITE_URL` to your live URL (e.g. `https://www.your-domain.com`) for accurate Open Graph URLs and JSON-LD.
 5. In Netlify: **Forms** → enable **form detection** if prompted, then redeploy. After deploy, confirm the **`contact`** form appears (registered from `public/__forms.html`; submissions POST there per [OpenNext Forms](https://opennext.js.org/netlify/forms)).
 6. Optional: **Site configuration** → **Notifications** → **Form submission notifications** to email new submissions to the practice inbox.
-7. Replace placeholder images in `public/` (`office-1.jpg`, `office-2.jpg`, `therapist-headshot.jpg`) with real photos when ready.
+7. Replace or add images in `public/` as needed; current assets include headshots, office photos, and Roscoe images referenced by the home and about pages.
 
 ## Project layout (App Router)
 

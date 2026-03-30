@@ -6,7 +6,7 @@ import { practice, therapistHeadshotAlt } from "@/lib/site";
 const trustChips = [
   "Accepting new clients",
   "In-person & telehealth",
-  "Insurance welcome",
+  "Insurance accepted",
 ] as const;
 
 export function HeroSection() {
@@ -66,7 +66,7 @@ export function HeroSection() {
               )}
             >
               <Link href="/contact" className={btnPrimary}>
-                Start a conversation
+                Request a consultation
               </Link>
               <a href={`tel:${practice.phoneTel}`} className={btnSecondary}>
                 Call {practice.phoneDisplay}

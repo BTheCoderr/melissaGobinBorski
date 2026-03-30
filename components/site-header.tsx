@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { cn, shell } from "@/lib/ui";
+import { btnPrimary, cn, shell } from "@/lib/ui";
 import { practice } from "@/lib/site";
 
 const nav = [
@@ -16,6 +16,7 @@ const nav = [
 function linkClass(active: boolean) {
   return cn(
     "rounded-full px-4 py-2 text-[0.8125rem] font-medium tracking-[0.02em] transition-colors duration-300",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage",
     active
       ? "bg-sage-light/90 text-foreground"
       : "text-muted hover:bg-cream/60 hover:text-foreground",
@@ -55,21 +56,14 @@ export function SiteHeader() {
               </Link>
             ))}
           </nav>
-          <Link
-            href="/contact"
-            className={cn(
-              "ml-1 rounded-full bg-sage px-5 py-2.5 text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-white",
-              "shadow-md shadow-sage/20 transition-[background,box-shadow] duration-300 hover:bg-sage-dark hover:shadow-lg",
-              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage",
-            )}
-          >
-            Get in touch
+          <Link href="/contact" className={cn(btnPrimary, "ml-1 shrink-0 px-5 py-2.5 text-[0.8125rem]")}>
+            Request a consultation
           </Link>
         </div>
 
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-full border border-foreground/[0.1] bg-background/90 p-2.5 text-foreground md:hidden"
+          className="inline-flex items-center justify-center rounded-full border border-foreground/[0.1] bg-background/90 p-2.5 text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage md:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
           onClick={() => setOpen((v) => !v)}
@@ -112,10 +106,13 @@ export function SiteHeader() {
             ))}
             <Link
               href="/contact"
-              className="mt-4 inline-flex min-h-[44px] items-center justify-center rounded-full bg-sage px-4 py-3 text-center text-sm font-semibold text-white"
+              className={cn(
+                btnPrimary,
+                "mt-4 w-full justify-center px-4 py-3 text-center text-[0.875rem]",
+              )}
               onClick={() => setOpen(false)}
             >
-              Get in touch
+              Request a consultation
             </Link>
           </nav>
         </div>

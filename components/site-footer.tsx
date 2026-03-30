@@ -6,8 +6,8 @@ export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
     <footer className="relative mt-auto border-t border-foreground/[0.06] bg-gradient-to-b from-paper-alt/50 to-background">
-      <div className={cn(shell, "py-16 md:py-20")}>
-        <div className="grid gap-12 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:gap-16">
+      <div className={cn(shell, "py-14 md:py-20")}>
+        <div className="grid gap-10 md:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] md:gap-16">
           <div>
             <p className="font-serif text-xl font-normal text-foreground">{practice.therapistName}</p>
             <p className="mt-2 text-sm text-muted">{practice.title} · {practice.credentials}</p>
@@ -21,7 +21,10 @@ export function SiteFooter() {
               Contact
             </p>
             <a
-              className={cn("mt-4 block font-serif text-xl text-foreground transition-colors hover:text-sage")}
+              className={cn(
+                "mt-4 block font-serif text-xl text-foreground transition-colors hover:text-sage",
+                "rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage",
+              )}
               href={`tel:${practice.phoneTel}`}
             >
               {practice.phoneDisplay}
@@ -38,7 +41,7 @@ export function SiteFooter() {
               {practice.addressLine2}
             </p>
             <Link href="/contact" className={cn(linkAccent, "mt-5 inline-block text-sm")}>
-              Send a message
+              Request a consultation
             </Link>
           </div>
         </div>

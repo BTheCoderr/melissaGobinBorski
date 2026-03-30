@@ -43,7 +43,7 @@ export const proseBodySm = cn("max-w-prose text-[0.9375rem] leading-[1.72] text-
 /** Primary CTA */
 export const btnPrimary = cn(
   "inline-flex min-h-[2.75rem] items-center justify-center rounded-full px-9 py-3",
-  "text-[0.8125rem] font-semibold uppercase tracking-[0.12em] text-white",
+  "text-[0.9375rem] font-semibold normal-case tracking-[0.01em] text-white",
   "bg-sage shadow-[0_2px_20px_-4px_rgb(74_90_79/0.45)]",
   "transition-[transform,box-shadow,background-color] duration-300 ease-out",
   "hover:bg-sage-dark hover:shadow-[0_8px_28px_-6px_rgb(74_90_79/0.4)]",
@@ -54,7 +54,7 @@ export const btnPrimary = cn(
 /** Secondary CTA */
 export const btnSecondary = cn(
   "inline-flex min-h-[2.75rem] items-center justify-center rounded-full border border-foreground/[0.12] px-9 py-3",
-  "bg-background/60 text-[0.8125rem] font-semibold uppercase tracking-[0.1em] text-foreground",
+  "bg-background/60 text-[0.9375rem] font-semibold normal-case tracking-[0.01em] text-foreground",
   "backdrop-blur-sm transition-[border-color,background-color,transform] duration-300 ease-out",
   "hover:border-sage/35 hover:bg-cream/70",
   "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage",
@@ -91,6 +91,7 @@ export const tag = cn(
 export const linkAccent = cn(
   "font-medium text-sage underline decoration-sage/25 underline-offset-[5px]",
   "transition-colors hover:decoration-sage/60",
+  "focus-visible:rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sage",
 );
 
 /** Framed photograph (office / portrait) */

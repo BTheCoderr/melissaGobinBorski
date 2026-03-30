@@ -16,18 +16,18 @@ export function PageHero({ title: heading, description, eyebrow }: PageHeroProps
             "radial-gradient(ellipse 55% 70% at 50% 0%, rgb(230 235 228 / 0.9), transparent 72%)",
         }}
       />
-      <div className={cn(shell, "relative py-[clamp(3.25rem,10vw,5.5rem)]")}>
+      <div className={cn(shell, "relative py-[clamp(3.75rem,11vw,6rem)]")}>
         {eyebrow ? <p className={kicker}>{eyebrow}</p> : null}
         <h1
           className={cn(
             title,
-            "mt-3 max-w-[18ch] text-balance sm:max-w-2xl",
-            "text-[clamp(2rem,5vw,2.75rem)] leading-[1.12]",
+            "mt-4 max-w-[20ch] text-balance sm:max-w-[28rem] lg:max-w-2xl",
+            "text-[clamp(2.05rem,5.2vw,2.85rem)] leading-[1.11]",
           )}
         >
           {heading}
         </h1>
-        <p className={cn(proseBody, "mt-6 max-w-xl")}>{description}</p>
+        <p className={cn(proseBody, "mt-7 max-w-xl text-pretty")}>{description}</p>
       </div>
     </div>
   );
