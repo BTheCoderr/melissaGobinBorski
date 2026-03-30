@@ -30,6 +30,18 @@ export function ContactForm() {
         body,
       });
       if (!res.ok) {
+        const host = typeof window !== "undefined" ? window.location.hostname : "";
+        const onLocalDev =
+          host === "localhost" || host === "127.0.0.1" || host === "[::1]";
+        if (res.status === 405 && onLocalDev) {
+          const live = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "");
+          setError(
+            live
+              ? `The contact form only accepts submissions on the live Netlify site (localhost returns “method not allowed”). Test at ${live}/contact — or run \`netlify dev\` in this project.`
+              : `The contact form only works on your deployed Netlify URL, not on localhost. Open the live site to test, or run \`netlify dev\` in this project.`,
+          );
+          return;
+        }
         setError(`Something went wrong (${res.status}). Please try again or call the office.`);
         return;
       }
