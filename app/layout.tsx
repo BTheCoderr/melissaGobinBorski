@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { SeoJsonLd } from "@/lib/seo-json-ld";
@@ -25,6 +26,9 @@ const sans = DM_Sans({
 const baseTitle = `${practice.therapistName} | Therapist in Thompson & North Grosvenor Dale, CT`;
 
 const siteUrl = getSiteUrl();
+
+/** GA4 — set `NEXT_PUBLIC_GA_MEASUREMENT_ID` in Netlify to override. */
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? "G-F53G2P8QXN";
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${siteUrl}/`),
@@ -64,6 +68,18 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${gaMeasurementId}');
+          `}
+        </Script>
       </body>
     </html>
   );
