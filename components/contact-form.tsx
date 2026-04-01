@@ -8,7 +8,6 @@ import { btnPrimary, cn } from "@/lib/ui";
 /** Netlify Forms: POST to static `public/__forms.html` (required for Next.js on Netlify). */
 const NETLIFY_FORMS_ENDPOINT = "/__forms.html";
 
-<<<<<<< HEAD
 function getFormPostEndpoint(): string {
   if (process.env.NODE_ENV === "development") {
     return "/api/contact-dev";
@@ -16,8 +15,6 @@ function getFormPostEndpoint(): string {
   return NETLIFY_FORMS_ENDPOINT;
 }
 
-=======
->>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
 export function ContactForm() {
   const router = useRouter();
   const [pending, setPending] = useState(false);
@@ -35,11 +32,7 @@ export function ContactForm() {
         if (typeof value === "string") params.append(key, value);
       });
       const body = params.toString();
-<<<<<<< HEAD
       const res = await fetch(getFormPostEndpoint(), {
-=======
-      const res = await fetch(NETLIFY_FORMS_ENDPOINT, {
->>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body,

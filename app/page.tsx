@@ -32,14 +32,8 @@ const testimonialQuotes = [
 ] as const;
 
 export const metadata: Metadata = {
-<<<<<<< HEAD
   description:
     "Therapy for anxiety, depression, and life transitions in Thompson, CT. Serving Putnam, Woodstock, and Windham County. In-person and telehealth available.",
-=======
-  title: "Therapy in Thompson, CT",
-  description:
-    "When everything feels like too much, you don’t have to carry it alone. Melissa Gobin Borski, LCSW, LICSW—individual therapy for adults and adolescents 13 and over in Thompson, CT. In-person & telehealth.",
->>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
 };
 
 const featureItems = [
@@ -94,7 +88,6 @@ export default function HomePage() {
         </div>
       </section>
 
-<<<<<<< HEAD
       <section className="relative border-b border-foreground/[0.05] bg-background py-12 md:py-14">
         <div className={shell}>
           <FadeIn>
@@ -129,8 +122,6 @@ export default function HomePage() {
         </div>
       </section>
 
-=======
->>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
       <EditorialSection>
         <FadeIn>
           <SectionTitle kicker="Permission" title="Hard seasons rarely come with a map" />
@@ -332,16 +323,12 @@ export default function HomePage() {
         <div className={sectionRule} aria-hidden />
         <div className={cn(shell, "text-center")}>
           <FadeIn>
-<<<<<<< HEAD
             <p className={cn(proseBodySm, "mx-auto max-w-2xl text-pretty text-muted")}>
               Conveniently located in North Grosvenor Dale, CT, and serving clients in Putnam,
               Woodstock, Thompson, and throughout Windham County—counseling near Putnam CT and mental
               health therapy across the region.
             </p>
             <h2 className="mx-auto mt-14 max-w-md text-balance font-serif text-[clamp(1.6rem,3.5vw,2.125rem)] font-normal leading-snug tracking-[-0.02em] text-foreground">
-=======
-            <h2 className="mx-auto max-w-md text-balance font-serif text-[clamp(1.6rem,3.5vw,2.125rem)] font-normal leading-snug tracking-[-0.02em] text-foreground">
->>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
               One gentle next step is enough
             </h2>
             <p className={cn(proseBody, "mx-auto mt-8 max-w-md")}>
