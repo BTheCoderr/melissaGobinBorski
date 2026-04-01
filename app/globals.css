@@ -75,17 +75,24 @@ body {
 .hero-fade-delay-4 {
   animation-delay: 0.28s;
 }
+<<<<<<< HEAD
 .hero-fade-delay-5 {
   animation-delay: 0.35s;
 }
+=======
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
 
 @media (prefers-reduced-motion: reduce) {
   .hero-fade,
   .hero-fade-delay-1,
   .hero-fade-delay-2,
   .hero-fade-delay-3,
+<<<<<<< HEAD
   .hero-fade-delay-4,
   .hero-fade-delay-5 {
+=======
+  .hero-fade-delay-4 {
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
     animation: none;
     opacity: 1;
     transform: none;

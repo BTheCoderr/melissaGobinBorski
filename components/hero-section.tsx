@@ -30,6 +30,7 @@ export function HeroSection() {
             <p className={cn(kicker, "hero-fade")}>{practice.heroKicker}</p>
             <h1
               className={cn(
+<<<<<<< HEAD
                 "hero-fade hero-fade-delay-1 mt-6 max-w-[22rem] text-balance font-serif text-[clamp(1.65rem,3.8vw,2.35rem)] font-normal leading-[1.16] tracking-[-0.025em] text-foreground sm:max-w-2xl",
               )}
             >
@@ -47,20 +48,38 @@ export function HeroSection() {
             <p
               className={cn(
                 "hero-fade hero-fade-delay-3 mt-6 font-serif text-[clamp(1.125rem,2.2vw,1.35rem)] text-foreground",
+=======
+                "hero-fade hero-fade-delay-1 mt-6 max-w-[22rem] text-balance font-serif text-[clamp(1.85rem,4.2vw,2.45rem)] font-normal leading-[1.14] tracking-[-0.025em] text-foreground sm:max-w-2xl",
+              )}
+            >
+              When everything feels like too much, you don’t have to carry it alone
+            </h1>
+            <p
+              className={cn(
+                "hero-fade hero-fade-delay-2 mt-8 font-serif text-[clamp(1.125rem,2.2vw,1.35rem)] text-foreground",
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
               )}
             >
               {practice.therapistName}, {practice.credentials}
             </p>
             <p
               className={cn(
+<<<<<<< HEAD
                 "hero-fade hero-fade-delay-4 mt-5 max-w-md text-pretty text-[1.0625rem] leading-[1.75] text-muted sm:max-w-lg",
+=======
+                "hero-fade hero-fade-delay-3 mt-6 max-w-md text-pretty text-[1.0625rem] leading-[1.75] text-muted sm:max-w-lg",
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
               )}
             >
               Genuine empathy and skilled support for anxiety, trauma, low mood, and stress—at your
               pace, without pressure to have it all figured out first.
             </p>
             <ul
+<<<<<<< HEAD
               className={cn("hero-fade hero-fade-delay-4 mt-10 flex flex-wrap gap-2.5")}
+=======
+              className={cn("hero-fade hero-fade-delay-3 mt-10 flex flex-wrap gap-2.5")}
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
               aria-label="Practice highlights"
             >
               {trustChips.map((t) => (
@@ -71,7 +90,11 @@ export function HeroSection() {
             </ul>
             <div
               className={cn(
+<<<<<<< HEAD
                 "hero-fade hero-fade-delay-5 mt-12 flex flex-col gap-3 sm:flex-row sm:items-center",
+=======
+                "hero-fade hero-fade-delay-4 mt-12 flex flex-col gap-3 sm:flex-row sm:items-center",
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
               )}
             >
               <Link href="/contact" className={btnPrimary}>

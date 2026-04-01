@@ -9,7 +9,11 @@ import { btnPrimary, card, cn, proseBody, proseBodySm, sectionRule, sectionY, sh
 export const metadata: Metadata = {
   title: "Services",
   description:
+<<<<<<< HEAD
     "Anxiety therapy, depression counseling, and individual therapy in Thompson, CT—serving Putnam, Woodstock, Windham County. EMDR, CBT, DBT, trauma-informed care. In-person & telehealth.",
+=======
+    "Individual therapy for adults and adolescents 13 and over—Thompson, Windham County, CT. EMDR, CBT, DBT, trauma-informed care. In-person & telehealth.",
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
 };
 
 export default function ServicesPage() {

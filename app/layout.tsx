@@ -23,7 +23,11 @@ const sans = DM_Sans({
   weight: ["400", "500", "600"],
 });
 
+<<<<<<< HEAD
 const baseTitle = `Therapist in Thompson, CT | ${practice.therapistName}, LCSW`;
+=======
+const baseTitle = `${practice.therapistName} | Therapist in Thompson & North Grosvenor Dale, CT`;
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
 
 const siteUrl = getSiteUrl();
 
@@ -36,12 +40,20 @@ export const metadata: Metadata = {
     default: baseTitle,
     template: `%s | ${practice.therapistName}`,
   },
+<<<<<<< HEAD
   description:
     "Therapy for anxiety, depression, and life transitions in Thompson, CT. Serving Putnam, Woodstock, and Windham County. In-person and telehealth available.",
   openGraph: {
     title: baseTitle,
     description:
       "Therapy for anxiety, depression, and life transitions in Thompson, CT. Serving Putnam, Woodstock, and Windham County. In-person and telehealth available.",
+=======
+  description: `Calm, experienced therapy for ${practice.audienceShort.toLowerCase()} in Thompson & North Grosvenor Dale, CT. LCSW, LICSW. In-person & telehealth.`,
+  openGraph: {
+    title: baseTitle,
+    description:
+      "A steadier place to begin—individual therapy with Melissa Gobin Borski, LCSW, LICSW.",
+>>>>>>> 197b44ff16adb409f0d03c20f7da217dfe9a4be1
     url: siteUrl,
     siteName: practice.therapistName,
     locale: "en_US",
