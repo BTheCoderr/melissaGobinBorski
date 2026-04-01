@@ -1,0 +1,165 @@
+"use client";
+
+import { useRouter } from "next/navigation";
+import { useState, type FormEvent } from "react";
+import { getSiteUrl } from "@/lib/site-url";
+import { btnPrimary, cn } from "@/lib/ui";
+
+/** Netlify Forms: POST to static `public/__forms.html` (required for Next.js on Netlify). */
+const NETLIFY_FORMS_ENDPOINT = "/__forms.html";
+
+function getFormPostEndpoint(): string {
+  if (process.env.NODE_ENV === "development") {
+    return "/api/contact-dev";
+  }
+  return NETLIFY_FORMS_ENDPOINT;
+}
+
+export function ContactForm() {
+  const router = useRouter();
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setError(null);
+    setPending(true);
+    const form = event.currentTarget;
+    try {
+      const fd = new FormData(form);
+      const params = new URLSearchParams();
+      fd.forEach((value, key) => {
+        if (typeof value === "string") params.append(key, value);
+      });
+      const body = params.toString();
+      const res = await fetch(getFormPostEndpoint(), {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body,
+      });
+      if (!res.ok) {
+        const host = typeof window !== "undefined" ? window.location.hostname : "";
+        const onLocalDev =
+          host === "localhost" || host === "127.0.0.1" || host === "[::1]";
+        if (res.status === 405 && onLocalDev) {
+          const live = getSiteUrl();
+          setError(
+            `The contact form only accepts submissions on the live Netlify site (localhost returns “method not allowed”). Test at ${live}/contact — or run \`netlify dev\` in this project.`,
+          );
+          return;
+        }
+        setError(`Something went wrong (${res.status}). Please try again or call the office.`);
+        return;
+      }
+      router.push("/contact?success=1");
+    } catch {
+      setError("Could not send your message. Please try again or call the office.");
+    } finally {
+      setPending(false);
+    }
+  }
+
+  return (
+    <form name="contact" method="POST" className="space-y-7" onSubmit={handleSubmit}>
+      <input type="hidden" name="form-name" value="contact" />
+
+      <p className="hidden">
+        <label>
+          Don’t fill this out if you’re human: <input name="bot-field" />
+        </label>
+      </p>
+
+      <div>
+        <label htmlFor="name" className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-stone-500">
+          Name
+        </label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          autoComplete="name"
+          required
+          disabled={pending}
+          className={cn(
+            "mt-2.5 w-full rounded-2xl border border-foreground/[0.1] bg-background/80 px-4 py-3.5",
+            "text-[1rem] text-foreground shadow-inner shadow-foreground/[0.02]",
+            "outline-none transition-[box-shadow,border-color] duration-300",
+            "focus:border-sage/35 focus:ring-2 focus:ring-sage/15",
+            "disabled:opacity-60",
+          )}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="email" className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-stone-500">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          disabled={pending}
+          className={cn(
+            "mt-2.5 w-full rounded-2xl border border-foreground/[0.1] bg-background/80 px-4 py-3.5",
+            "text-[1rem] text-foreground shadow-inner shadow-foreground/[0.02]",
+            "outline-none transition-[box-shadow,border-color] duration-300",
+            "focus:border-sage/35 focus:ring-2 focus:ring-sage/15",
+            "disabled:opacity-60",
+          )}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="phone" className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-stone-500">
+          Phone <span className="font-normal normal-case tracking-normal text-muted">(optional)</span>
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          disabled={pending}
+          className={cn(
+            "mt-2.5 w-full rounded-2xl border border-foreground/[0.1] bg-background/80 px-4 py-3.5",
+            "text-[1rem] text-foreground shadow-inner shadow-foreground/[0.02]",
+            "outline-none transition-[box-shadow,border-color] duration-300",
+            "focus:border-sage/35 focus:ring-2 focus:ring-sage/15",
+            "disabled:opacity-60",
+          )}
+        />
+      </div>
+
+      <div>
+        <label htmlFor="message" className="text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-stone-500">
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          rows={5}
+          required
+          disabled={pending}
+          className={cn(
+            "mt-2.5 w-full resize-y rounded-2xl border border-foreground/[0.1] bg-background/80 px-4 py-3.5",
+            "text-[1rem] text-foreground shadow-inner shadow-foreground/[0.02]",
+            "outline-none transition-[box-shadow,border-color] duration-300",
+            "focus:border-sage/35 focus:ring-2 focus:ring-sage/15",
+            "disabled:opacity-60",
+          )}
+        />
+      </div>
+
+      {error ? (
+        <p className="text-[0.9375rem] text-red-800/90 dark:text-red-200/90" role="alert">
+          {error}
+        </p>
+      ) : null}
+
+      <button type="submit" className={btnPrimary} disabled={pending} aria-busy={pending}>
+        {pending ? "Sending…" : "Send message"}
+      </button>
+    </form>
+  );
+}
